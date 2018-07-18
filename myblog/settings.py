@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR1=os.path.join(BASE_DIR,'my_app/templates/my_app')
 TEMPLATE_DIR2=os.path.join(BASE_DIR,'my_app/templates/registration')
-STATIC_DIR=os.path.join(BASE_DIR,'static')
+STATIC_DIR=os.path.join(BASE_DIR,'my_app/static')
 MEDIA_DIR=os.path.join(BASE_DIR,'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
