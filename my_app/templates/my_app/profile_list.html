@@ -1,0 +1,29 @@
+{% extends 'my_app/base.html' %}
+{% load staticfiles%}
+{% block body_block %}
+<h1 class='commenttitle center techfont'>Welcome {{user|title}}!!</h1><br>
+     <div class="center">
+           
+        {% for posts in post_list %}
+           {% ifequal posts.author user %}
+           
+           <div class="post">
+           <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
+           <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
+           <div><strong>{{posts.author|title}}</strong></div>
+           {% if posts.publish_date %}
+           <div class="date">{{posts.publish_date}}</div>
+           <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
+           {% else %}
+           <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=posts.pk %}">Publish</a>
+           {% endif %}
+           <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
+           
+           </div>
+           {% else %}
+           {% endifequal %}
+           {% endfor %}
+
+     </div>
+
+{% endblock %}  

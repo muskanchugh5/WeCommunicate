@@ -1,0 +1,16 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+{% if registered %}
+<p>Thank u for registering !!</p>
+{% else %}
+<form method="POST">
+    {% csrf_token %}
+    {{Userform.as_p}}
+    {{Profileform.as_p}}
+    <input type="submit" value="Register">
+</form>
+
+
+
+{% endif %}
+{% endblock %}  

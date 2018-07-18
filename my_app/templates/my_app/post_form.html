@@ -1,0 +1,16 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+<div >
+    <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-info" value="Save">
+            
+    </form>
+    <script>
+         var editor = new MediumEditor('.editable');
+         
+       
+    </script>
+</div> 
+{% endblock %}  

@@ -1,0 +1,33 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+
+<div class="post center ">
+       <div class="posttitle"><a class="loader"><b>{{post.title|title}}</b></a></div>
+       <p class='posttext' >{{ post.text|safe|linebreaksbr }}</p>
+       <div><strong>{{post.author|title}}</strong></div>
+       {% ifequal post.author user %}
+       <a href="{% url 'my_app:update_post' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+       <a class="delete" href="{% url 'my_app:delete_post' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a> 
+        {% endifequal %}
+
+       {% if post.publish_date %}
+       <div class ="date">{{post.publish_date}}</div>
+</div>
+
+<div class="post center">
+    <div class="commenttitle"><b>{{post.Comment.all.count}} Comment</b></div>
+        {% for comment in post.Comment.all %}
+        <h5><strong>{{comment.author|title}}</strong>:{{comment.text|safe|linebreaksbr}}</h5>
+        {% ifequal comment.author user %}
+       <a href="{% url 'my_app:update_post' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+       <a class="delete" href="{% url 'my_app:delete_post' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a> 
+        {% endifequal %}
+        {% endfor %}
+</div>
+       {% else %}
+       <p>{{post.create_date}}</p>
+       <a class="btn btn-info publish-btn" href="{% url 'my_app:publish_post' pk=post.pk %}">Publish</a>
+</div>
+       {% endif %}
+
+{% endblock %}  

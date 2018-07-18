@@ -1,0 +1,10 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+<div class="comments center post">
+    <h1 class="commenttitle techfont">Comments :</h1>
+       {% for comments in post.Comment.all %}
+           <div><strong>{{comments|title}}</strong>:{{comments.text|safe|linebreaksbr}}</div>
+        {% endfor %}
+</div>
+
+{% endblock %}

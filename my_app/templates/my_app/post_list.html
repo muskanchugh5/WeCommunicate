@@ -1,0 +1,19 @@
+{% extends 'my_app/base.html' %}
+{% block body_block %}
+<div class="center">
+    {% for posts in post_list %}
+      {% if posts.publish_date %}
+        <div class="post">
+        <div class="posttitle"><a class="loader" href="{% url 'my_app:post_detail' pk=posts.pk %}"><b>{{posts.title|title}}</b></a></div><br>
+        <div class="posttext">{{posts.text|truncatewords:20|safe|linebreaksbr}}</div>
+        <div><strong>{{posts.author|title}}</strong></div>
+        <div class="date">{{posts.publish_date}}</div>
+        <div><a href="{% url 'my_app:comment_list' pk=posts.pk%}" >Comments:{{posts.Comment.all.count}}</a></div>
+        <a class="btn btn-info comment-btn" href="{% url 'my_app:comment_post' pk=posts.pk %}">Add Comment</a>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+</div>
+
+{% endblock %}

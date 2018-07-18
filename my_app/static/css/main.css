@@ -1,0 +1,98 @@
+.posttitle{
+    
+    text-align: center;
+    /* font-family: 'Wendy One', sans-serif; */
+    font-family: 'Armata', sans-serif;
+    font-size: 30px;
+}
+
+
+a.comment-btn{
+    position: absolute;
+    right: 10px;
+    bottom: 15px;    
+}
+
+.posttext span{
+    color:green;
+}
+.center{
+    margin-left:300px;
+    margin-right:300px;
+}
+
+.techfont{
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+
+.post{
+    font-family: 'Armata', sans-serif;
+    background-color: white;
+    padding:10px;
+    margin-top:10px;
+    position: relative;
+}
+.delete{
+    color:red;
+}
+.blog{
+    text-align: center;
+}
+.commenttitle{
+    font-size: 20px;
+    color: rgb(92, 166, 226)
+}
+
+
+a.publish-btn{
+   right: 10px;
+   position: absolute;
+   bottom: 5px;
+
+}
+
+body{
+    background-color: rgb(226, 233, 240);
+}
+
+
+
+.loader{
+    filter:hue-rotate(0deg);
+    color: linear-gradient(45deg,#0f8,#08f);
+    animation:hue 5000ms infinite linear;
+  }
+  
+  @keyframes spinify {
+    0% {
+      transform: translate(0px,0px);
+  
+    }
+    33% {
+      transform: translate(0px,24px);
+      border-radius:100%;
+      width:10px;
+      height:10px;
+  
+    }
+     66% {
+      transform:translate(0px,-16px);
+    }
+  
+     88% {
+      transform:translate(0px,4px);
+  
+    }
+    100% {
+      transform:translate(0px,0px);
+    }
+  }
+  @keyframes hue{
+    0%{filter: hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+  
+  }
