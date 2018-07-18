@@ -16,21 +16,21 @@
         <nav class="navbar navbar-default custom-navbar techfont">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li><a class="navbar-link" href="{% url 'my_app:about' %}">About</a></li>
-                    <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+                    <li><a class="nav-link active" href="{% url 'my_app:about' %}">About</a></li>
+                    <li><a class="navbar-link active" href="{% url 'admin:index' %}">Admin</a></li>
                     <li><a class="navbar-link" href="{% url 'my_app:post_list' %}">Blog</a></li>
                 </ul>
            
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="navbar-link" href="{% url 'my_app:draft_post' %}">Drafts</a></li>
-                    <li><a class="navbar-link" href="{% url 'my_app:create_post' %}">New Post</a></li>
+                    <li><a class="navbar-link active" href="{% url 'my_app:draft_post' %}">Drafts</a></li>
+                    <li><a class="navbar-link active" href="{% url 'my_app:create_post' %}">New Post</a></li>
                     
                     {% if user.is_authenticated %}
-                    <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
-                    <li ><a class="navbar-link" href="{% url 'my_app:user_profile'  %}">Welcome {{user|title}}</a></li>
+                    <li><a class="navbar-link active" href="{% url 'logout' %}">Logout</a></li>
+                    <li ><a class="navbar-link active" href="{% url 'my_app:user_profile'  %}">Welcome {{user|title}}</a></li>
                     {% else %}
-                    <li><a class="navbar-link" href="{% url 'login' %}">Login</a></li>
-                    <li><a class="navbar-link" href="{% url 'my_app:register' %}">Register</a></li>
+                    <li><a class="navbar-link active" href="{% url 'login' %}">Login</a></li>
+                    <li><a class="navbar-link active" href="{% url 'my_app:register' %}">Register</a></li>
                     
                     {% endif %}
                 </ul>
