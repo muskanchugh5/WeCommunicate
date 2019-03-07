@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 class Post(models.Model):
     title=models.CharField(max_length=256)
-    author=models.ForeignKey('auth.User')
+    author=models.ForeignKey('auth.User',on_delete=models.CASCADE)
     text=models.TextField()
     create_date=models.DateTimeField(default=timezone.now)
     publish_date=models.DateTimeField(blank=True,null=True)
@@ -31,8 +31,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post=models.ForeignKey('Post',related_name="Comment")
-    author=models.ForeignKey('auth.User')
+    post=models.ForeignKey('Post',related_name="Comment",on_delete=models.CASCADE)
+    author=models.ForeignKey('auth.User',on_delete=models.CASCADE)
     text=models.TextField()
     create_date=models.DateTimeField(default=timezone.now)
     
@@ -45,7 +45,7 @@ class Comment(models.Model):
 
 
 class User_info(models.Model):
-    username=models.OneToOneField(User)
+    username=models.OneToOneField(User,on_delete=models.CASCADE)
     profilepic=models.ImageField(blank=True,upload_to='profilePic')
    
     def __str__(self):
