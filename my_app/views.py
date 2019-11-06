@@ -8,6 +8,7 @@ from my_app.forms import PostForm,CommentForm,UserForm,UserProfileForm
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 class AboutView(TemplateView):
@@ -76,7 +77,7 @@ class DraftPostView(LoginRequiredMixin,ListView):
 
    
 
-@login_required
+@method_decorator(login_required)
 def publish_post(request,pk):
     post=get_object_or_404(Post,pk=pk)
     print(post.title)
@@ -84,7 +85,7 @@ def publish_post(request,pk):
     return redirect('my_app:post_list')
 
 
-@login_required
+@method_decorator(login_required)
 def add_comment(request,pk):
     post=get_object_or_404(Post,pk=pk)
     if request.method=="POST":
@@ -101,7 +102,7 @@ def add_comment(request,pk):
         form=CommentForm()
     return render(request,'comment_form.html',{'form':form,'post':post})
 
-@login_required
+@method_decorator(login_required)
 def comment_remove(request,pk):
     comment=get_object_or_404(Comment,pk=pk)
     post_pk=comment.post.pk
